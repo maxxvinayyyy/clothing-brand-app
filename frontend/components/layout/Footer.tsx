@@ -10,9 +10,9 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {/* Brand */}
           <div>
-            <h2 className="text-xl font-bold tracking-widest uppercase mb-4">BRAND</h2>
+            <h2 className="text-xl font-extrabold tracking-[0.25em] uppercase mb-4">ELEVARE</h2>
             <p className="text-gray-400 text-sm leading-relaxed mb-5">
-              Timeless clothing crafted for the modern individual. Quality you can feel, style you can trust.
+              Elevate your everyday aesthetic. Timeless, minimalist clothing crafted for the modern individual.
             </p>
             <div className="flex items-center gap-4">
               <a href="#" className="text-gray-400 hover:text-white transition-colors">
@@ -73,7 +73,7 @@ export function Footer() {
         </div>
 
         <div className="mt-12 pt-6 border-t border-gray-800 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-sm text-gray-500">&copy; {new Date().getFullYear()} BRAND. All rights reserved.</p>
+          <p className="text-sm text-gray-500">&copy; {new Date().getFullYear()} ELEVARE. All rights reserved.</p>
           <div className="flex gap-5 text-sm text-gray-500">
             <a href="#" className="hover:text-gray-300 transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-gray-300 transition-colors">Terms of Service</a>

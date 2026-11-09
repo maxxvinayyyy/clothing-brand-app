@@ -1,4 +1,5 @@
-# 👗 Minimalist Clothing Brand Application
+# 👗 ELEVARE — Minimalist Clothing Brand
+> *Elevate Your Everyday Aesthetic.*
 
 A modern, full-stack e-commerce web application tailored for a fashion/clothing brand. Built with **Next.js 14 (App Router)**, **Tailwind CSS**, **Node.js/Express**, and **PostgreSQL with Prisma ORM**.
 

@@ -20,8 +20,8 @@ export function Sidebar() {
   return (
     <aside className="w-60 bg-gray-900 text-white min-h-screen flex flex-col flex-shrink-0">
       <div className="p-5 border-b border-gray-800">
-        <Link href="/" className="text-lg font-bold tracking-widest uppercase">
-          BRAND
+        <Link href="/" className="text-lg font-extrabold tracking-[0.2em] uppercase">
+          ELEVARE
         </Link>
         <p className="text-xs text-gray-500 mt-0.5">Admin Panel</p>
       </div>

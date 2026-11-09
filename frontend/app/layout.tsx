@@ -11,8 +11,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'BRAND — Dress to Impress',
-  description: 'Premium clothing brand for the modern individual.',
+  title: 'ELEVARE — Elevate Your Everyday Aesthetic',
+  description: 'Elevate your everyday aesthetic with timeless, minimalist clothing crafted for the modern individual.',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

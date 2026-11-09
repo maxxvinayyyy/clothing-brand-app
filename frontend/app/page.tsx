@@ -45,12 +45,12 @@ export default function HomePage() {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/30 to-black/50" />
         <div className="relative z-10 text-center text-white px-4 max-w-3xl mx-auto">
-          <p className="text-sm font-medium tracking-widest uppercase mb-4 opacity-80">New Collection 2024</p>
-          <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight mb-6 leading-none">
-            Dress to<br />Impress
+          <p className="text-sm font-medium tracking-[0.25em] uppercase mb-4 opacity-90">ELEVARE COLLECTION</p>
+          <h1 className="text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tight mb-6 leading-none">
+            Elevate Your<br />Everyday Aesthetic
           </h1>
           <p className="text-lg sm:text-xl opacity-90 mb-10 max-w-xl mx-auto leading-relaxed">
-            Timeless clothing crafted for the modern individual. Quality you can feel, style you can trust.
+            Timeless silhouettes crafted for the modern individual. Quality you can feel, elegance you can wear.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link href="/products">

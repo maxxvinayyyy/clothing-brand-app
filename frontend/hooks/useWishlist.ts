@@ -1,14 +1,17 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import api from '@/lib/api';
 import { WishlistItem } from '@/lib/types';
+import { useAuthStore } from '@/store/authStore';
 
 export function useWishlist() {
+  const { isAuthenticated } = useAuthStore();
   return useQuery<WishlistItem[]>({
     queryKey: ['wishlist'],
     queryFn: async () => {
       const { data } = await api.get('/wishlist');
       return data;
     },
+    enabled: isAuthenticated,
   });
 }
 

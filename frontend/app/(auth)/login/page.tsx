@@ -7,6 +7,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { Input } from '@/components/ui/Input';
 import { Button } from '@/components/ui/Button';
+import { LiquidBackground } from '@/components/ui/LiquidBackground';
 import { useLogin } from '@/hooks/useAuth';
 
 const loginSchema = z.object({
@@ -17,7 +18,7 @@ const loginSchema = z.object({
 type LoginValues = z.infer<typeof loginSchema>;
 
 export default function LoginPage() {
-  const { mutate: login, isPending, error } = useLogin();
+  const { mutate: login, isPending } = useLogin();
   const [apiError, setApiError] = useState('');
 
   const { register, handleSubmit, formState: { errors } } = useForm<LoginValues>({
@@ -35,20 +36,25 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-[80vh] flex items-center justify-center px-4">
-      <div className="w-full max-w-sm">
+    <div className="relative min-h-[85vh] flex items-center justify-center px-4 py-12 overflow-hidden">
+      <LiquidBackground variant="hero" />
+
+      <div className="w-full max-w-md glass-card p-8 sm:p-10 rounded-3xl border border-white/[0.12] shadow-2xl relative z-10 backdrop-blur-2xl">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">Welcome Back</h1>
-          <p className="text-gray-500 mt-2">Sign in to your account</p>
+          <span className="text-[10px] uppercase tracking-[0.25em] text-cyan-400 font-bold block mb-2">
+            ELEVARE ATELIER
+          </span>
+          <h1 className="text-3xl font-black text-white uppercase tracking-tight">Welcome Back</h1>
+          <p className="text-xs text-neutral-400 mt-2 font-light">Sign in to access your saved orders & private salon</p>
         </div>
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <Input
-            label="Email"
+            label="Email Address"
             type="email"
             {...register('email')}
             error={errors.email?.message}
-            placeholder="you@example.com"
+            placeholder="name@example.com"
           />
           <Input
             label="Password"
@@ -59,19 +65,19 @@ export default function LoginPage() {
           />
 
           {apiError && (
-            <div className="p-3 bg-red-50 border border-red-200 rounded-lg text-sm text-red-600">
+            <div className="p-3.5 bg-rose-950/60 border border-rose-500/40 rounded-xl text-xs text-rose-300">
               {apiError}
             </div>
           )}
 
-          <Button type="submit" isLoading={isPending} size="lg" className="w-full">
-            Sign In
+          <Button type="submit" isLoading={isPending} size="lg" className="w-full mt-2 font-bold tracking-wider uppercase text-xs">
+            Sign In to Atelier
           </Button>
         </form>
 
-        <p className="text-center text-sm text-gray-500 mt-6">
+        <p className="text-center text-xs text-neutral-400 mt-8">
           Don&apos;t have an account?{' '}
-          <Link href="/signup" className="font-semibold text-gray-900 hover:underline">
+          <Link href="/signup" className="font-semibold text-white hover:text-cyan-300 underline underline-offset-4 transition-colors">
             Create an account
           </Link>
         </p>

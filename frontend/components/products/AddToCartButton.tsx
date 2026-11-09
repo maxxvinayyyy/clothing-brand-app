@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Product, ProductVariant } from '@/lib/types';
+import { Product } from '@/lib/types';
 import { Button } from '@/components/ui/Button';
 import { useAddToCart } from '@/hooks/useCart';
 import { useAuthStore } from '@/store/authStore';
@@ -52,22 +52,22 @@ export function AddToCartButton({ product }: AddToCartButtonProps) {
   };
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-6">
       {/* Size selector */}
       {sizes.length > 0 && (
         <div>
-          <p className="text-sm font-medium text-gray-900 mb-2">
-            Size: <span className="font-normal text-gray-600">{selectedSize}</span>
+          <p className="text-xs font-bold uppercase tracking-wider text-neutral-300 mb-2.5">
+            Size: <span className="font-semibold text-white ml-1">{selectedSize}</span>
           </p>
           <div className="flex flex-wrap gap-2">
             {sizes.map((size) => (
               <button
                 key={size}
                 onClick={() => setSelectedSize(size)}
-                className={`px-3.5 py-2 text-sm border rounded-md transition-colors ${
+                className={`px-4 py-2 text-xs font-bold rounded-xl border transition-all ${
                   selectedSize === size
-                    ? 'bg-gray-900 text-white border-gray-900'
-                    : 'border-gray-300 text-gray-700 hover:border-gray-500'
+                    ? 'bg-white text-black border-white shadow-md scale-105'
+                    : 'bg-white/[0.04] border-white/10 text-neutral-300 hover:border-white/30 hover:text-white'
                 }`}
               >
                 {size}
@@ -80,18 +80,18 @@ export function AddToCartButton({ product }: AddToCartButtonProps) {
       {/* Color selector */}
       {colors.length > 0 && (
         <div>
-          <p className="text-sm font-medium text-gray-900 mb-2">
-            Color: <span className="font-normal text-gray-600">{selectedColor}</span>
+          <p className="text-xs font-bold uppercase tracking-wider text-neutral-300 mb-2.5">
+            Color: <span className="font-semibold text-white ml-1">{selectedColor}</span>
           </p>
           <div className="flex flex-wrap gap-2">
             {colors.map((color) => (
               <button
                 key={color}
                 onClick={() => setSelectedColor(color)}
-                className={`px-3 py-1.5 text-sm border rounded-md transition-colors ${
+                className={`px-4 py-2 text-xs font-bold rounded-xl border transition-all ${
                   selectedColor === color
-                    ? 'bg-gray-900 text-white border-gray-900'
-                    : 'border-gray-300 text-gray-700 hover:border-gray-500'
+                    ? 'bg-white text-black border-white shadow-md scale-105'
+                    : 'bg-white/[0.04] border-white/10 text-neutral-300 hover:border-white/30 hover:text-white'
                 }`}
               >
                 {color}
@@ -103,27 +103,27 @@ export function AddToCartButton({ product }: AddToCartButtonProps) {
 
       {/* Quantity */}
       <div>
-        <p className="text-sm font-medium text-gray-900 mb-2">Quantity</p>
-        <div className="flex items-center border border-gray-300 rounded-md w-fit">
+        <p className="text-xs font-bold uppercase tracking-wider text-neutral-300 mb-2.5">Quantity</p>
+        <div className="flex items-center bg-white/[0.04] border border-white/10 rounded-xl w-fit">
           <button
             onClick={() => setQuantity((q) => Math.max(1, q - 1))}
-            className="px-3 py-2 text-gray-500 hover:text-gray-900 transition-colors"
+            className="px-3.5 py-2 text-neutral-400 hover:text-white transition-colors text-base"
           >
             −
           </button>
-          <span className="px-4 py-2 text-sm font-medium text-gray-900 border-x border-gray-300">
+          <span className="px-4 py-2 text-xs font-bold text-white border-x border-white/10">
             {quantity}
           </span>
           <button
             onClick={() => setQuantity((q) => Math.min(selectedVariant?.stock ?? 10, q + 1))}
-            className="px-3 py-2 text-gray-500 hover:text-gray-900 transition-colors"
+            className="px-3.5 py-2 text-neutral-400 hover:text-white transition-colors text-base"
           >
             +
           </button>
         </div>
         {selectedVariant && (
-          <p className="text-xs text-gray-400 mt-1">
-            {selectedVariant.stock} in stock
+          <p className="text-[11px] text-cyan-400 mt-2">
+            {selectedVariant.stock} units currently in stock
           </p>
         )}
       </div>
@@ -134,17 +134,17 @@ export function AddToCartButton({ product }: AddToCartButtonProps) {
         isLoading={isLoading}
         disabled={isOutOfStock}
         size="lg"
-        className="w-full"
+        className="w-full bg-white text-black hover:bg-neutral-100 font-bold uppercase tracking-wider text-xs py-4 rounded-full shadow-[0_0_25px_rgba(255,255,255,0.25)] hover:scale-[1.02] active:scale-[0.98] transition-all"
       >
         {added ? (
-          <span className="flex items-center gap-2">
-            <Check size={18} /> Added to Cart!
+          <span className="flex items-center justify-center gap-2 text-emerald-600">
+            <Check size={18} /> Added to Atelier Bag!
           </span>
         ) : isOutOfStock ? (
-          'Out of Stock'
+          'Currently Unavailable'
         ) : (
-          <span className="flex items-center gap-2">
-            <ShoppingBag size={18} /> Add to Cart
+          <span className="flex items-center justify-center gap-2">
+            <ShoppingBag size={16} /> Add to Atelier Bag
           </span>
         )}
       </Button>

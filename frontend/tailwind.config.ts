@@ -33,6 +33,10 @@ const config: Config = {
         'marquee': 'marquee 28s linear infinite',
         'kenburns': 'kenburns 24s ease-out infinite alternate',
         'pulse-subtle': 'pulseSubtle 2.5s ease-in-out infinite',
+        'liquid-1': 'liquidOne 16s ease-in-out infinite alternate',
+        'liquid-2': 'liquidTwo 20s ease-in-out infinite alternate',
+        'liquid-3': 'liquidThree 18s ease-in-out infinite alternate',
+        'liquid-glow': 'liquidGlow 8s ease-in-out infinite alternate',
       },
       keyframes: {
         fadeIn: {
@@ -58,6 +62,25 @@ const config: Config = {
         pulseSubtle: {
           '0%, 100%': { opacity: '1' },
           '50%': { opacity: '0.6' },
+        },
+        liquidOne: {
+          '0%': { transform: 'translate3d(0, 0, 0) scale(1) rotate(0deg)' },
+          '50%': { transform: 'translate3d(60px, -40px, 0) scale(1.15) rotate(45deg)' },
+          '100%': { transform: 'translate3d(-40px, 50px, 0) scale(0.95) rotate(-30deg)' },
+        },
+        liquidTwo: {
+          '0%': { transform: 'translate3d(0, 0, 0) scale(1) rotate(0deg)' },
+          '50%': { transform: 'translate3d(-50px, 60px, 0) scale(1.2) rotate(-50deg)' },
+          '100%': { transform: 'translate3d(50px, -30px, 0) scale(0.9) rotate(35deg)' },
+        },
+        liquidThree: {
+          '0%': { transform: 'translate3d(0, 0, 0) scale(1.1)' },
+          '50%': { transform: 'translate3d(30px, 40px, 0) scale(0.85)' },
+          '100%': { transform: 'translate3d(-50px, -40px, 0) scale(1.18)' },
+        },
+        liquidGlow: {
+          '0%, 100%': { opacity: '0.45', filter: 'blur(70px)' },
+          '50%': { opacity: '0.8', filter: 'blur(95px)' },
         },
       },
     },

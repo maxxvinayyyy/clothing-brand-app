@@ -78,15 +78,15 @@ export default function ProductDetailPage({ params }: PageProps) {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-      <Link href="/products" className="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-gray-900 mb-8 transition-colors">
-        <ChevronLeft size={16} /> Back to Products
+    <div className="relative min-h-screen max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <Link href="/products" className="inline-flex items-center gap-1.5 text-xs uppercase tracking-widest text-neutral-400 hover:text-white mb-8 transition-colors">
+        <ChevronLeft size={16} /> Back to Catalog
       </Link>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
         {/* Images */}
         <div>
-          <div className="relative aspect-[3/4] rounded-xl overflow-hidden bg-gray-100 mb-3">
+          <div className="relative aspect-[3/4] rounded-3xl overflow-hidden bg-neutral-900 border border-white/[0.08] mb-4 shadow-2xl">
             <Image
               src={images[selectedImageIdx]?.url || `https://picsum.photos/seed/${product.slug}/800/1000`}
               alt={images[selectedImageIdx]?.alt || product.name}
@@ -96,13 +96,13 @@ export default function ProductDetailPage({ params }: PageProps) {
             />
           </div>
           {images.length > 1 && (
-            <div className="grid grid-cols-4 gap-2">
+            <div className="grid grid-cols-4 gap-3">
               {images.slice(0, 4).map((img, idx) => (
                 <button
                   key={img.id}
                   onClick={() => setSelectedImageIdx(idx)}
-                  className={`relative aspect-square rounded-lg overflow-hidden bg-gray-100 border-2 transition-colors ${
-                    selectedImageIdx === idx ? 'border-gray-900' : 'border-transparent'
+                  className={`relative aspect-square rounded-xl overflow-hidden bg-neutral-900 border-2 transition-all ${
+                    selectedImageIdx === idx ? 'border-indigo-400 scale-105' : 'border-white/10 opacity-70 hover:opacity-100'
                   }`}
                 >
                   <Image src={img.url} alt={img.alt || product.name} fill className="object-cover" />
@@ -113,48 +113,50 @@ export default function ProductDetailPage({ params }: PageProps) {
         </div>
 
         {/* Product Info */}
-        <div>
-          <div className="flex items-start justify-between mb-3">
-            <Badge>{product.category?.name}</Badge>
+        <div className="flex flex-col">
+          <div className="flex items-start justify-between mb-4">
+            <Badge variant="info">{product.category?.name || 'Exclusive Edit'}</Badge>
             <button
               onClick={handleWishlistToggle}
-              className="p-2 rounded-full border border-gray-200 hover:bg-gray-50 transition-colors"
+              className="p-3 rounded-full bg-white/[0.06] border border-white/10 hover:bg-white/[0.12] text-white transition-all shadow-md"
             >
               <Heart
-                size={20}
-                className={isWishlisted ? 'fill-red-500 text-red-500' : 'text-gray-400'}
+                size={18}
+                className={isWishlisted ? 'fill-rose-500 text-rose-500' : 'text-neutral-400'}
               />
             </button>
           </div>
 
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">{product.name}</h1>
+          <h1 className="text-3xl sm:text-4xl font-black text-white uppercase tracking-tight mb-3">{product.name}</h1>
 
-          <div className="flex items-center gap-3 mb-4">
+          <div className="flex items-center gap-3 mb-5">
             {(product.averageRating ?? 0) > 0 && (
               <>
-                <StarRating rating={product.averageRating ?? 0} size={16} />
-                <span className="text-sm text-gray-500">
-                  {(product.averageRating ?? 0).toFixed(1)} ({product.reviewCount} reviews)
+                <StarRating rating={product.averageRating ?? 0} size={15} />
+                <span className="text-xs text-neutral-400">
+                  {(product.averageRating ?? 0).toFixed(1)} ({product.reviewCount} client reviews)
                 </span>
               </>
             )}
           </div>
 
-          <p className="text-2xl font-bold text-gray-900 mb-6">{formatPrice(product.price)}</p>
+          <p className="text-3xl font-black text-white tracking-wide mb-8">{formatPrice(product.price)}</p>
 
-          <AddToCartButton product={product} />
+          <div className="glass-card p-6 rounded-2xl border border-white/[0.08] mb-8">
+            <AddToCartButton product={product} />
+          </div>
 
           {/* Tabs */}
-          <div className="mt-10">
-            <div className="flex border-b border-gray-200">
+          <div className="mt-4">
+            <div className="flex border-b border-white/[0.08]">
               {(['description', 'reviews'] as const).map((tab) => (
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab)}
-                  className={`px-4 py-2.5 text-sm font-medium capitalize transition-colors border-b-2 -mb-px ${
+                  className={`px-5 py-3 text-xs uppercase tracking-widest font-bold capitalize transition-colors border-b-2 -mb-px ${
                     activeTab === tab
-                      ? 'border-gray-900 text-gray-900'
-                      : 'border-transparent text-gray-500 hover:text-gray-700'
+                      ? 'border-indigo-400 text-white'
+                      : 'border-transparent text-neutral-400 hover:text-neutral-200'
                   }`}
                 >
                   {tab} {tab === 'reviews' && reviews ? `(${reviews.length})` : ''}
@@ -162,15 +164,15 @@ export default function ProductDetailPage({ params }: PageProps) {
               ))}
             </div>
 
-            <div className="pt-5">
+            <div className="pt-6">
               {activeTab === 'description' && (
-                <p className="text-gray-600 leading-relaxed">{product.description}</p>
+                <p className="text-neutral-300 text-sm leading-relaxed font-light">{product.description}</p>
               )}
 
               {activeTab === 'reviews' && (
                 <div className="space-y-5">
                   {reviews?.length === 0 && (
-                    <p className="text-gray-500 text-sm">No reviews yet. Be the first to review!</p>
+                    <p className="text-neutral-400 text-xs font-light">No client reviews yet. Be the first to review!</p>
                   )}
                   {reviews?.map((review) => (
                     <ReviewCard key={review.id} review={review} />
@@ -178,29 +180,29 @@ export default function ProductDetailPage({ params }: PageProps) {
 
                   {/* Add review form */}
                   {isAuthenticated && (
-                    <form onSubmit={handleSubmit(onReviewSubmit)} className="border border-gray-200 rounded-xl p-5 space-y-4 mt-6">
-                      <h4 className="font-semibold text-gray-900">Write a Review</h4>
+                    <form onSubmit={handleSubmit(onReviewSubmit)} className="glass-card rounded-2xl p-6 border border-white/10 space-y-4 mt-6">
+                      <h4 className="text-xs font-bold uppercase tracking-wider text-white">Write an Atelier Review</h4>
                       <div>
-                        <label className="text-sm font-medium text-gray-700 mb-1 block">Rating</label>
+                        <label className="text-xs font-medium text-neutral-300 mb-1.5 block">Rating</label>
                         <select
                           {...register('rating', { required: true })}
-                          className="border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-gray-400"
+                          className="bg-white/[0.06] border border-white/15 rounded-xl px-4 py-2 text-xs text-white focus:outline-none"
                         >
                           {[5, 4, 3, 2, 1].map((r) => (
-                            <option key={r} value={r}>{'⭐'.repeat(r)} {r} star{r !== 1 ? 's' : ''}</option>
+                            <option key={r} value={r} className="bg-neutral-900 text-white">{'⭐'.repeat(r)} {r} star{r !== 1 ? 's' : ''}</option>
                           ))}
                         </select>
                       </div>
                       <div>
-                        <label className="text-sm font-medium text-gray-700 mb-1 block">Comment (optional)</label>
+                        <label className="text-xs font-medium text-neutral-300 mb-1.5 block">Thoughts on Quality & Fit</label>
                         <textarea
                           {...register('comment')}
                           rows={3}
                           placeholder="Share your thoughts about this product..."
-                          className="w-full border border-gray-300 rounded-md px-3.5 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-gray-400 resize-none"
+                          className="w-full bg-white/[0.06] border border-white/15 rounded-xl px-4 py-3 text-xs text-white placeholder-neutral-500 focus:outline-none focus:ring-1 focus:ring-white/40 resize-none"
                         />
                       </div>
-                      <Button type="submit" isLoading={addReview.isPending} size="sm">
+                      <Button type="submit" isLoading={addReview.isPending} size="sm" className="bg-white text-black text-xs font-bold uppercase tracking-wider">
                         Submit Review
                       </Button>
                     </form>

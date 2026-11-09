@@ -8,16 +8,16 @@ interface ReviewCardProps {
 
 export function ReviewCard({ review }: ReviewCardProps) {
   return (
-    <div className="border border-gray-100 rounded-lg p-4">
+    <div className="glass-card rounded-2xl p-5 border border-white/[0.08]">
       <div className="flex items-start justify-between mb-2">
         <div>
-          <p className="text-sm font-semibold text-gray-900">{review.user.name}</p>
-          <p className="text-xs text-gray-400">{formatDate(review.createdAt)}</p>
+          <p className="text-sm font-bold text-white">{review.user.name}</p>
+          <p className="text-[11px] text-neutral-400">{formatDate(review.createdAt)}</p>
         </div>
         <StarRating rating={review.rating} size={14} />
       </div>
       {review.comment && (
-        <p className="text-sm text-gray-600 leading-relaxed">{review.comment}</p>
+        <p className="text-xs text-neutral-300 leading-relaxed font-light mt-2">{review.comment}</p>
       )}
     </div>
   );

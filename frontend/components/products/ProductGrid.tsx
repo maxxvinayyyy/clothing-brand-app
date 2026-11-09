@@ -29,8 +29,8 @@ export function ProductGrid({ products, isLoading, columns = 4 }: ProductGridPro
     return (
       <div className="flex flex-col items-center justify-center py-20 text-center">
         <p className="text-5xl mb-4">🛍️</p>
-        <h3 className="text-lg font-semibold text-gray-900">No products found</h3>
-        <p className="text-sm text-gray-500 mt-1">Try adjusting your filters or search term.</p>
+        <h3 className="text-lg font-semibold text-white">No products found</h3>
+        <p className="text-sm text-neutral-400 mt-1">Try adjusting your filters or search term.</p>
       </div>
     );
   }

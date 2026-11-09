@@ -7,6 +7,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { Input } from '@/components/ui/Input';
 import { Button } from '@/components/ui/Button';
+import { LiquidBackground } from '@/components/ui/LiquidBackground';
 import { useSignup } from '@/hooks/useAuth';
 
 const signupSchema = z.object({
@@ -40,11 +41,16 @@ export default function SignupPage() {
   };
 
   return (
-    <div className="min-h-[80vh] flex items-center justify-center px-4">
-      <div className="w-full max-w-sm">
+    <div className="relative min-h-[85vh] flex items-center justify-center px-4 py-12 overflow-hidden">
+      <LiquidBackground variant="hero" />
+
+      <div className="w-full max-w-md glass-card p-8 sm:p-10 rounded-3xl border border-white/[0.12] shadow-2xl relative z-10 backdrop-blur-2xl">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">Create Account</h1>
-          <p className="text-gray-500 mt-2">Join us today</p>
+          <span className="text-[10px] uppercase tracking-[0.25em] text-cyan-400 font-bold block mb-2">
+            JOIN ELEVARE ATELIER
+          </span>
+          <h1 className="text-3xl font-black text-white uppercase tracking-tight">Create Account</h1>
+          <p className="text-xs text-neutral-400 mt-2 font-light">Experience tailored luxury, saved bags & early access</p>
         </div>
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
@@ -55,41 +61,41 @@ export default function SignupPage() {
             placeholder="John Doe"
           />
           <Input
-            label="Email"
+            label="Email Address"
             type="email"
             {...register('email')}
             error={errors.email?.message}
-            placeholder="you@example.com"
+            placeholder="name@example.com"
           />
           <Input
             label="Password"
             type="password"
             {...register('password')}
             error={errors.password?.message}
-            placeholder="Min. 8 characters"
+            placeholder="Minimum 8 characters"
           />
           <Input
             label="Confirm Password"
             type="password"
             {...register('confirmPassword')}
             error={errors.confirmPassword?.message}
-            placeholder="Repeat your password"
+            placeholder="Repeat password"
           />
 
           {apiError && (
-            <div className="p-3 bg-red-50 border border-red-200 rounded-lg text-sm text-red-600">
+            <div className="p-3.5 bg-rose-950/60 border border-rose-500/40 rounded-xl text-xs text-rose-300">
               {apiError}
             </div>
           )}
 
-          <Button type="submit" isLoading={isPending} size="lg" className="w-full">
-            Create Account
+          <Button type="submit" isLoading={isPending} size="lg" className="w-full mt-2 font-bold tracking-wider uppercase text-xs">
+            Create Atelier Account
           </Button>
         </form>
 
-        <p className="text-center text-sm text-gray-500 mt-6">
-          Already have an account?{' '}
-          <Link href="/login" className="font-medium text-gray-900 hover:underline">
+        <p className="text-center text-xs text-neutral-400 mt-8">
+          Already registered?{' '}
+          <Link href="/login" className="font-semibold text-white hover:text-cyan-300 underline underline-offset-4 transition-colors">
             Sign in
           </Link>
         </p>

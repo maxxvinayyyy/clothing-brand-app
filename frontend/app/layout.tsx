@@ -12,16 +12,16 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: 'ELEVARE — Elevate Your Everyday Aesthetic',
-  description: 'Elevate your everyday aesthetic with timeless, minimalist clothing crafted for the modern individual.',
+  description: 'Elevate your everyday aesthetic with timeless, architectural clothing crafted for the modern individual.',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={inter.variable}>
-      <body className="min-h-screen bg-white text-gray-900 font-sans flex flex-col">
+      <body className="min-h-screen bg-[#090a0f] text-slate-100 font-sans flex flex-col relative selection:bg-indigo-500 selection:text-white antialiased">
         <Providers>
           <Navbar />
-          <main className="flex-1">{children}</main>
+          <main className="flex-1 relative z-10">{children}</main>
           <Footer />
         </Providers>
       </body>

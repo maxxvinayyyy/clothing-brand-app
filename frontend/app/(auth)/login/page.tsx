@@ -71,16 +71,10 @@ export default function LoginPage() {
 
         <p className="text-center text-sm text-gray-500 mt-6">
           Don&apos;t have an account?{' '}
-          <Link href="/signup" className="font-medium text-gray-900 hover:underline">
-            Sign up
+          <Link href="/signup" className="font-semibold text-gray-900 hover:underline">
+            Create an account
           </Link>
         </p>
-
-        <div className="mt-6 p-4 bg-gray-50 rounded-lg text-xs text-gray-500">
-          <p className="font-medium text-gray-700 mb-1">Demo credentials:</p>
-          <p>Admin: admin@store.com / Admin123!</p>
-          <p>Customer: john@example.com / Customer123!</p>
-        </div>
       </div>
     </div>
   );

@@ -151,12 +151,20 @@ export function Navbar() {
                 )}
               </div>
             ) : (
-              <Link
-                href="/login"
-                className="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors"
-              >
-                Login
-              </Link>
+              <div className="flex items-center gap-2 sm:gap-3">
+                <Link
+                  href="/login"
+                  className="text-xs sm:text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors px-2 py-1"
+                >
+                  Sign In
+                </Link>
+                <Link
+                  href="/signup"
+                  className="text-xs sm:text-sm font-medium bg-gray-900 text-white px-3.5 py-1.5 rounded-full hover:bg-gray-800 transition-colors shadow-sm"
+                >
+                  Create Account
+                </Link>
+              </div>
             )}
 
             {/* Mobile menu button */}
@@ -200,6 +208,25 @@ export function Navbar() {
                 {link.label}
               </Link>
             ))}
+
+            {!isAuthenticated && (
+              <div className="pt-4 mt-2 border-t border-gray-100 flex flex-col gap-2">
+                <Link
+                  href="/login"
+                  className="block w-full text-center py-2 text-sm font-medium text-gray-700 border border-gray-300 rounded-lg hover:bg-gray-50"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  Sign In
+                </Link>
+                <Link
+                  href="/signup"
+                  className="block w-full text-center py-2 text-sm font-medium bg-gray-900 text-white rounded-lg hover:bg-gray-800"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  Create Account
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       )}

@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { useOrders } from '@/hooks/useOrders';
 import { useAuthStore } from '@/store/authStore';
 import { useRouter } from 'next/navigation';
@@ -13,9 +14,19 @@ export default function OrdersPage() {
   const { isAuthenticated } = useAuthStore();
   const router = useRouter();
   const { data: orders, isLoading } = useOrders();
+  const [mounted, setMounted] = useState(false);
 
-  if (!isAuthenticated) {
-    router.push('/login');
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (mounted && !isAuthenticated) {
+      router.push('/login');
+    }
+  }, [mounted, isAuthenticated, router]);
+
+  if (!mounted || !isAuthenticated) {
     return null;
   }
 

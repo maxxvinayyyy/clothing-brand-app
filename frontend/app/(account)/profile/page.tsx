@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useAuthStore } from '@/store/authStore';
 import { useRouter } from 'next/navigation';
 import { Input } from '@/components/ui/Input';
@@ -13,9 +13,19 @@ export default function ProfilePage() {
   const [name, setName] = useState(user?.name || '');
   const [isSaving, setIsSaving] = useState(false);
   const [message, setMessage] = useState('');
+  const [mounted, setMounted] = useState(false);
 
-  if (!user) {
-    router.push('/login');
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (mounted && !user) {
+      router.push('/login');
+    }
+  }, [mounted, user, router]);
+
+  if (!mounted || !user) {
     return null;
   }
 

@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useOrder } from '@/hooks/useOrders';
@@ -28,9 +29,19 @@ export default function OrderDetailPage({ params }: PageProps) {
   const { isAuthenticated } = useAuthStore();
   const router = useRouter();
   const { data: order, isLoading } = useOrder(params.id);
+  const [mounted, setMounted] = useState(false);
 
-  if (!isAuthenticated) {
-    router.push('/login');
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (mounted && !isAuthenticated) {
+      router.push('/login');
+    }
+  }, [mounted, isAuthenticated, router]);
+
+  if (!mounted || !isAuthenticated) {
     return null;
   }
 

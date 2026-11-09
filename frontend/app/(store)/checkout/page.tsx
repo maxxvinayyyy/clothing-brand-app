@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useCartStore } from '@/store/cartStore';
 import { useAuthStore } from '@/store/authStore';
@@ -23,14 +23,23 @@ export default function CheckoutPage() {
   const [shippingMethod, setShippingMethod] = useState<'standard' | 'express'>('standard');
   const [isPlacing, setIsPlacing] = useState(false);
   const [error, setError] = useState('');
+  const [mounted, setMounted] = useState(false);
 
-  if (!isAuthenticated) {
-    router.push('/login');
-    return null;
-  }
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
-  if (items.length === 0) {
-    router.push('/cart');
+  useEffect(() => {
+    if (mounted) {
+      if (!isAuthenticated) {
+        router.push('/login');
+      } else if (items.length === 0) {
+        router.push('/cart');
+      }
+    }
+  }, [mounted, isAuthenticated, items.length, router]);
+
+  if (!mounted || !isAuthenticated || items.length === 0) {
     return null;
   }
 

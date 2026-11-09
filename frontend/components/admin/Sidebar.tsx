@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import { LayoutDashboard, Package, ShoppingCart, Tag, LogOut } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useLogout } from '@/hooks/useAuth';
+import { ElevareLogo } from '@/components/ui/ElevareLogo';
 
 const navItems = [
   { href: '/admin', label: 'Dashboard', icon: LayoutDashboard, exact: true },
@@ -20,10 +21,8 @@ export function Sidebar() {
   return (
     <aside className="w-60 bg-gray-900 text-white min-h-screen flex flex-col flex-shrink-0">
       <div className="p-5 border-b border-gray-800">
-        <Link href="/" className="text-lg font-extrabold tracking-[0.2em] uppercase">
-          ELEVARE
-        </Link>
-        <p className="text-xs text-gray-500 mt-0.5">Admin Panel</p>
+        <ElevareLogo size="sm" />
+        <p className="text-[10px] text-neutral-400 uppercase tracking-widest mt-1">Atelier Admin</p>
       </div>
 
       <nav className="flex-1 p-3 space-y-1">

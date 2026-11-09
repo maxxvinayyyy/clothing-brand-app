@@ -6,6 +6,7 @@ import { ShoppingBag, User, Search, Menu, X, Heart, ChevronDown, LogOut, Package
 import { useAuthStore } from '@/store/authStore';
 import { useCartStore } from '@/store/cartStore';
 import { useLogout } from '@/hooks/useAuth';
+import { ElevareLogo } from '@/components/ui/ElevareLogo';
 
 export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -30,11 +31,7 @@ export function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo */}
-          <Link href="/" className="group flex items-center gap-2">
-            <span className="text-xl sm:text-2xl font-black tracking-[0.25em] text-white uppercase group-hover:opacity-90 transition-opacity">
-              ELEVARE
-            </span>
-          </Link>
+          <ElevareLogo size="md" />
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">

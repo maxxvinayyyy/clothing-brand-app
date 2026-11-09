@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <defs>
+    <!-- Liquid Gradient for Emblem -->
+    <linearGradient id="elevareLiquid" x1="10%" y1="0%" x2="90%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="25%" stop-color="#F1F5F9" />
+      <stop offset="55%" stop-color="#38BDF8" />
+      <stop offset="100%" stop-color="#818CF8" />
+    </linearGradient>
+
+    <!-- Deep Obsidian Background -->
+    <linearGradient id="elevareBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#11131c" />
+      <stop offset="50%" stop-color="#090a0f" />
+      <stop offset="100%" stop-color="#040407" />
+    </linearGradient>
+
+    <!-- Apple-style Glass Border Sheen -->
+    <linearGradient id="glassBorder" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="rgba(255, 255, 255, 0.4)" />
+      <stop offset="45%" stop-color="rgba(56, 189, 248, 0.3)" />
+      <stop offset="100%" stop-color="rgba(129, 140, 248, 0.15)" />
+    </linearGradient>
+
+    <!-- Soft Liquid Aura -->
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="10" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Obsidian Curved Squircle Canvas -->
+  <rect width="512" height="512" rx="118" fill="url(#elevareBg)" stroke="url(#glassBorder)" stroke-width="8" />
+
+  <!-- Ambient Liquid Core Glow -->
+  <circle cx="256" cy="256" r="140" fill="#6366F1" opacity="0.22" filter="url(#softGlow)" />
+  <circle cx="280" cy="220" r="90" fill="#38BDF8" opacity="0.2" filter="url(#softGlow)" />
+
+  <!-- The Architectural ELEVARE Monogram -->
+  <g filter="url(#softGlow)">
+    <!-- 1. Ascending Elevation Chevron (Top of E) -->
+    <path
+      d="M 256,122 L 388,234 L 336,274 L 256,204 L 176,274 L 124,234 Z"
+      fill="url(#elevareLiquid)"
+    />
+
+    <!-- 2. Minimalist Horizon Bar (Middle of E) -->
+    <path
+      d="M 174,296 L 338,296 L 314,334 L 198,334 Z"
+      fill="url(#elevareLiquid)"
+    />
+
+    <!-- 3. Architectural Pedestal (Base of E) -->
+    <path
+      d="M 136,356 L 376,356 L 350,396 L 162,396 Z"
+      fill="url(#elevareLiquid)"
+    />
+  </g>
+</svg>

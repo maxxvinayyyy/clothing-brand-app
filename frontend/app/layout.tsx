@@ -13,6 +13,16 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: 'ELEVARE — Elevate Your Everyday Aesthetic',
   description: 'Elevate your everyday aesthetic with timeless, architectural clothing crafted for the modern individual.',
+  icons: {
+    icon: [
+      { url: '/icon.svg', type: 'image/svg+xml' },
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+    ],
+    shortcut: '/icon.svg',
+    apple: [
+      { url: '/apple-icon.svg', type: 'image/svg+xml' },
+    ],
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

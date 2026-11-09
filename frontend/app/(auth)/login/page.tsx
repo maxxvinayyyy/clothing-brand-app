@@ -8,6 +8,7 @@ import { z } from 'zod';
 import { Input } from '@/components/ui/Input';
 import { Button } from '@/components/ui/Button';
 import { LiquidBackground } from '@/components/ui/LiquidBackground';
+import { ElevareLogo } from '@/components/ui/ElevareLogo';
 import { useLogin } from '@/hooks/useAuth';
 
 const loginSchema = z.object({
@@ -40,11 +41,9 @@ export default function LoginPage() {
       <LiquidBackground variant="hero" />
 
       <div className="w-full max-w-md glass-card p-8 sm:p-10 rounded-3xl border border-white/[0.12] shadow-2xl relative z-10 backdrop-blur-2xl">
-        <div className="text-center mb-8">
-          <span className="text-[10px] uppercase tracking-[0.25em] text-cyan-400 font-bold block mb-2">
-            ELEVARE ATELIER
-          </span>
-          <h1 className="text-3xl font-black text-white uppercase tracking-tight">Welcome Back</h1>
+        <div className="text-center mb-8 flex flex-col items-center">
+          <ElevareLogo size="lg" className="mb-4" />
+          <h1 className="text-2xl sm:text-3xl font-black text-white uppercase tracking-tight">Welcome Back</h1>
           <p className="text-xs text-neutral-400 mt-2 font-light">Sign in to access your saved orders & private salon</p>
         </div>
 

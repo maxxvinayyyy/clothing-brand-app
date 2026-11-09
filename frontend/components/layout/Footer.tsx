@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { Instagram, Twitter, Facebook, ArrowUpRight } from 'lucide-react';
+import { ElevareLogo } from '@/components/ui/ElevareLogo';
 
 export function Footer() {
   return (
@@ -13,9 +14,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           {/* Brand Manifesto */}
           <div className="md:col-span-2">
-            <h2 className="text-xl sm:text-2xl font-black tracking-[0.25em] uppercase mb-4 text-white">
-              ELEVARE
-            </h2>
+            <ElevareLogo size="lg" className="mb-4" />
             <p className="text-neutral-400 text-sm leading-relaxed mb-6 max-w-sm">
               Elevate your everyday aesthetic. Sculpted architectural silhouettes crafted for the modern individual with purest organic textures and timeless restraint.
             </p>
